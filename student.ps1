@@ -24,11 +24,11 @@ Write-Host "Checking dependencies..."
 Write-Host "Choco install manifest: " -NoNewline
 
 if (!(Test-Path "collection/packages.config")) {
-    Write-Host "Missing!"
+    Write-Host "Missing!" -ForegroundColor Red
     Exit
 }
 else {
-    Write-Host "OK."
+    Write-Host "OK." -ForegroundColor Green
 }
 
 # ::::::::::::::::::::::::::::::::

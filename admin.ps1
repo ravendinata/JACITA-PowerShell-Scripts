@@ -26,11 +26,11 @@ Write-Host "Checking dependencies..."
 Write-Host "Scheduled Tasks Register script: " -NoNewline
 
 if (!(Test-Path "collection/scheduled_tasks.ps1")) {
-    Write-Host "Missing!"
+    Write-Host "Missing!" -ForegroundColor Red
     Exit
 }
 else {
-    Write-Host "OK."
+    Write-Host "OK." -ForegroundColor Green
 }
 
 # ::::::::::::::::::::::::::::::::::::
