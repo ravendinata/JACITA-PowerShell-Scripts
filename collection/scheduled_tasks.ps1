@@ -17,11 +17,11 @@
 # Definition: choco_auto_update_task.xml
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Get-ScheduledTask -TaskName "JACITA - Chocolatey Automated Software Update" -ErrorAction SilentlyContinue -OutVariable task > $null
+Get-ScheduledTask -TaskName "Chocolatey Automated Software Update" -ErrorAction SilentlyContinue -OutVariable task > $null
 
 if (!$task) {
     Write-Output "Chocolatey Automated Software Update task is not registered. Registering..."
-    schtasks /Create /XML "choco_auto_update_task.xml" /TN "JACITA - Chocolatey Automated Software Update"
+    schtasks /Create /XML $PSScriptRoot/choco_auto_update_task.xml /TN "JACITA\Chocolatey Automated Software Update"
 }
 
 Write-Output "Chocolatey Automated Software Update task registered!"
