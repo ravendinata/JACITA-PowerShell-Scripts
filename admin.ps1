@@ -23,12 +23,14 @@ Write-Host "Checking dependencies..."
 # Check collection/scheduled_tasks.ps1
 # ::::::::::::::::::::::::::::::::::::
 
+Write-Host "Scheduled Tasks Register script: " -NoNewline
+
 if (!(Test-Path "collection/scheduled_tasks.ps1")) {
-    Write-Host "Scheduled Tasks Register script is missing! Aborting."
+    Write-Host "Missing!"
     Exit
 }
 else {
-    Write-Host "Exists: Scheduled Tasks Register script"
+    Write-Host "OK."
 }
 
 # ::::::::::::::::::::::::::::::::::::

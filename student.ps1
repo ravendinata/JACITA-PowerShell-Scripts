@@ -21,12 +21,14 @@ Write-Host "Checking dependencies..."
 # Check collection/packages.config
 # ::::::::::::::::::::::::::::::::
 
+Write-Host "Choco install manifest: " -NoNewline
+
 if (!(Test-Path "collection/packages.config")) {
-    Write-Host "Choco install manifest is missing! Aborting."
+    Write-Host "Missing!"
     Exit
 }
 else {
-    Write-Host "Exists: Choco install manifest"
+    Write-Host "OK."
 }
 
 # ::::::::::::::::::::::::::::::::
