@@ -13,7 +13,7 @@
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 # Task      : Chocolatey Automated Software Update
 # Desc.     : Creates a scheduled task that runs twice a year on 10th January
-#             and 20th July executing "choco upgrade all"
+#             and 10th July executing "choco upgrade all"
 # Definition: choco_auto_update_task.xml
 # :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -25,3 +25,23 @@ if (!$task) {
 }
 
 Write-Output "Chocolatey Automated Software Update task registered!"
+
+# END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Task      : Semester Disk Clean Up
+# Desc.     : Creates a scheduled task that runs twice a year on 10th January
+#             and 10th July executing clearmgr (disk cleanup utility)
+# Definition: semester_disk_clean_up.xml
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Get-ScheduledTask -TaskName "Semester Disk Clean Up" -ErrorAction SilentlyContinue -OutVariable task > $null
+
+if (!$task) {
+    Write-Output "Semester Disk Clean Up task is not registered. Registering..."
+    schtasks /Create /XML $PSScriptRoot/semester_disk_clean_up.xml /TN "JACITA\Semester Disk Clean Up"
+}
+
+Write-Output "Semester Disk Clean Up task registered!"
+
+# END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
