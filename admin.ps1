@@ -76,6 +76,15 @@ Write-Host "Chocolatey installed!"
 
 # :::::::::::::
 
+# :::::::::::::::::::::::::::::::::
+# Setup Microsoft Defender Settings
+# :::::::::::::::::::::::::::::::::
+
+Set-MpPreference -QuarantinePurgeItemsAfterDelay 30
+Set-MpPreference -ScanScheduleQuickScanTime 06:45:00
+
+# :::::::::::::::::::::::::::::::::
+
 # :::::::::::::::
 # Start CTT tweak
 # :::::::::::::::
