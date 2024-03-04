@@ -45,3 +45,22 @@ if (!$task) {
 Write-Output "Semester Disk Clean Up task registered!"
 
 # END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Task      : Monthly Recycle Bin Clean Up
+# Desc.     : Creates a scheduled task that runs every month on the 1st day executing
+#             the cmdlet Clear-RecycleBin -Force -ErrorAction SilentlyContinue to
+#             empty the recycle bin.
+# Definition: empty_recycle_bin.xml
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Get-ScheduledTask -TaskName "Monthly Recycle Bin Clean Up" -ErrorAction SilentlyContinue -OutVariable task > $null
+
+if (!$task) {
+    Write-Output "Monthly Recycle Bin Clean Up task is not registered. Registering..."
+    schtasks /Create /XML $PSScriptRoot/empty_recycle_bin.xml /TN "JACITA\Monthly Recycle Bin Clean Up"
+}
+
+Write-Output "Monthly Recycle Bin Clean Up task registered!"
+
+# END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
