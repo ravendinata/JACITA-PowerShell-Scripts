@@ -64,3 +64,21 @@ if (!$task) {
 Write-Output "Monthly Recycle Bin Clean Up task registered!"
 
 # END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Task      : Monthly SFC Scan
+# Desc.     : Creates a scheduled task that runs every month on the 2nd day executing
+#             the cmdlet sfc /scannow to scan and repair system files.
+# Definition: monthly_sfc.xml
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Get-ScheduledTask -TaskName "Monthly SFC Scan" -ErrorAction SilentlyContinue -OutVariable task > $null
+
+if (!$task) {
+    Write-Output "Monthly SFC Scan task is not registered. Registering..."
+    schtasks /Create /XML $PSScriptRoot/monthly_sfc.xml /TN "JACITA\Monthly SFC Scan"
+}
+
+Write-Output "Monthly SFC Scan task registered!"
+
+# END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
