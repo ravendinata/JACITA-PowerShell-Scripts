@@ -2,13 +2,13 @@
 # Script    : Laptop provisioning script - Admin Side
 # Author    : Raven Limadinata (JAC IT Team)
 # Date      : 2024/02/27
-# Rev.      : 1.0.0
+# Rev.      : 1.0.1
 # Comments  : Provisions a laptop by performing various tasks to standardize the laptop
 #             configuration. To be run on the student user.
 # Dependency: [CFG] collection/packages.config -> A list of software to install.
 # -------------------------------------------------------------------------------------
 
-Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.0 | Student Side" -ForegroundColor Magenta
+Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.1 | Student Side" -ForegroundColor Magenta
 Write-Host "Starting Laptop Provisioning Script..."
 
 # =====================
@@ -38,7 +38,7 @@ else {
 # ================
 
 # ::::::::::::::::::::::::::::::::::
-# Remove Windows Store on admin side
+# Remove Windows Store on student side
 # ::::::::::::::::::::::::::::::::::
 
 Write-Host "Removing Microsoft Store (Student)"
@@ -61,7 +61,7 @@ Set-MpPreference -ScanScheduleQuickScanTime 06:45:00
 # ::::::::::::::::::::::::::::::::::::::::::::::
 
 Write-Host "Installing essential software package via choco"
-choco install collection/packages.config
+choco install collection/packages.config --yes
 Write-Host "Choco bulk install done!"
 
 # ::::::::::::::::::::::::::::::::::::::::::::::
