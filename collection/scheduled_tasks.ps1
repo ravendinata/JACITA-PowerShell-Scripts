@@ -1,7 +1,7 @@
 ﻿# -------------------------------------------------------------------------------------
 # Script    : Register JACITA scheduled task(s)
 # Author    : Raven Limadinata (JAC IT Team)
-# Date      : 2024/02/27
+# Date      : 2024/07/17
 # Rev.      : 1
 # Comments  : A script to register all JACITA scheduled task(s). Each new entry must
 #             include a header comment to decribe the block.
@@ -80,5 +80,23 @@ if (!$task) {
 }
 
 Write-Output "Monthly SFC Scan task registered!"
+
+# END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+# Task      : Kill Roblox
+# Desc.     : Creates a scheduled task that runs every day at 08:15 executing
+#             the cmdlet taskkill /IM RobloxPlayerBeta.exe /F to kill Roblox.
+# Definition: kill_roblox.xml
+# :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Get-ScheduledTask -TaskName "Kill Roblox" -ErrorAction SilentlyContinue -OutVariable task > $null
+
+if (!$task) {
+    Write-Output "Kill Roblox task is not registered. Registering..."
+    schtasks /Create /XML $PSScriptRoot/kill_roblox.xml /TN "JACITA\Kill Roblox"
+}
+
+Write-Output "Kill Roblox task registered!"
 
 # END :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
