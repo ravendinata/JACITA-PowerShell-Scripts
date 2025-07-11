@@ -2,7 +2,7 @@
 # Script    : Laptop provisioning script - Admin Side
 # Author    : Raven Limadinata (JAC IT Team)
 # Date      : 2024/07/12
-# Rev.      : 1.0.4
+# Rev.      : 1.0.5
 # Comments  : Provisions a laptop by performing various tasks to standardize the laptop
 #             configuration. To be run on the admin user.
 # Dependency: [-] Internet connection to access https://christitus.com/win 
@@ -318,10 +318,16 @@ New-Partition -DiskNumber 0 -UseMaximumSize -AssignDriveLetter -DriveLetter Z
 # Run Reboot Restore Rx installer
 # :::::::::::::::::::::::::::::::
 
-Write-Host ""
-Write-Host "Running Reboot Restore Rx installer..."
-Start-Process -FilePath "$PSScriptRoot\collection\RR_Rx33\Setup.exe" -ArgumentList "/S" -Wait
-Write-Host "Reboot Restore Rx installed!" -ForegroundColor Green
+if ($windowsEdition -eq 48) {
+    Write-Host ""
+    Write-Host "Running Reboot Restore Rx installer..."
+    Start-Process -FilePath "$PSScriptRoot\collection\RR_Rx33\Setup.exe" -ArgumentList "/S" -Wait
+    Write-Host "Reboot Restore Rx installed!" -ForegroundColor Green
+}
+else {
+    Write-Host "Not an ICT Lab device. Skipping Reboot Restore Rx installation." -ForegroundColor Yellow
+}
+
 
 # :::::::::::::::::::::::::::::::
 
