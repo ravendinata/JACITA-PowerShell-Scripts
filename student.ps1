@@ -2,7 +2,7 @@
 # Script    : Laptop provisioning script - Admin Side
 # Author    : Raven Limadinata (JAC IT Team)
 # Date      : 2024/02/27
-# Rev.      : 1.0.1
+# Rev.      : 1.0.2
 # Comments  : Provisions a laptop by performing various tasks to standardize the laptop
 #             configuration. To be run on the student user.
 # Dependency: [CFG] collection/packages.config -> A list of software to install.
@@ -65,6 +65,14 @@ choco install collection/packages.config --yes
 Write-Host "Choco bulk install done!"
 
 # ::::::::::::::::::::::::::::::::::::::::::::::
+
+# ::::::::::::::::::::::::::::
+# Run network filtering script
+# ::::::::::::::::::::::::::::
+
+Write-Host "Running network filtering script..."
+Start-Process -FilePath "$PSScriptRoot\collection\network.ps1" -Wait
+Write-Host "Network filtering script executed!"
 
 # =======
 #   END
