@@ -8,7 +8,7 @@
 # Dependency: [CFG] collection/packages.config -> A list of software to install.
 # -------------------------------------------------------------------------------------
 
-Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.1 | Student Side" -ForegroundColor Magenta
+Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.2 | Student Side" -ForegroundColor Magenta
 Write-Host "Starting Laptop Provisioning Script..."
 
 # =====================

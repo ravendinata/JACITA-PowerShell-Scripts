@@ -16,7 +16,7 @@
 #             [DIR] collection/GroupPolicy -> Group policy settings to be copied.
 # -------------------------------------------------------------------------------------
 
-Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.2 | Admin Side" -ForegroundColor Green
+Write-Host "JAC SCHOOL IT TEAM | LAPTOP PROVISIONING SCRIPT | v1.0.5 | Admin Side" -ForegroundColor Green
 Write-Host "Starting Laptop Provisioning Script..."
 
 # =====================
